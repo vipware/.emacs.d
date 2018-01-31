@@ -3,3 +3,4 @@ elpa/
 .emacs.desktop.lock
 places
 recentf*
+.gitignore
