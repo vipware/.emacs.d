@@ -1,38 +1,54 @@
 ;;使用emacs的package管理功能
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                           ("melpa" . "http://elpa.emacs-china.org/melpa/")
-			   ("melpa" . "http://melpa.milkbox.net/packages/"))))
+(require 'package)
 
-;; 加载cl库 - 一个CommonLisp扩展库
-(require 'cl)
+(setq
+ package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                    ("org" . "http://orgmode.org/elpa/")
+                    ("melpa" . "http://melpa.org/packages/")
+                    ("melpa-stable" . "http://stable.melpa.org/packages/"))
+ 
+ package-archive-priorities '(("melpa-stable" . 1))) ;; the package manager
 
-;; Add Packages
-(defvar my/packages '(
-            ;;packages
-            ;;for example I want to install company, then simply add it to the list
-            company
+(package-initialize)
+
+(when (not package-archive-contents)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;;配置use-package包
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+(add-to-list 'exec-path "/usr/local/bin")
+
+(use-package company
+  :ensure t
+  :bind (("C-c /". company-complete))
+  :diminish company-mode
+  :commands company-mode
+  :init
+  (setq
+   company-dabbrev-ignore-case nil
+   company-dabbrev-code-ignore-case nil
+   company-dabbrev-downcase nil
+   company-idle-delay 0
+   company-minimum-prefix-length 4)
+  :config
+  ;; disables TAB in company-mode, freeing it for yasnippet
+  (global-company-mode)
+  (define-key company-active-map [tab] nil)
+  (define-key company-active-map (kbd "TAB") nil))
 
 
-           ) "Default packages")
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
 
-(setq package-selected-packages my/packages)
-
-(defun my/packages-installed-p ()
-    (loop for pkg in my/packages
-      when (not (package-installed-p pkg)) do (return nil)
-      finally (return t)))
-
-(unless (my/packages-installed-p)
-    (message "%s" "Refreshing package database...")
-    (package-refresh-contents)
-    (dolist (pkg my/packages)
-      (when (not (package-installed-p pkg))
-    (package-install pkg))))
-
-
+(use-package markdown-mode
+	     :ensure t)
+(use-package lispy
+  :config
+  (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)())))
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -127,3 +143,15 @@
  ((string-equal system-type "gnu/linux") ; linux
   (progn
     (message "Linux"))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (lispy markdown-mode magit company use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
