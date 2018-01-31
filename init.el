@@ -39,13 +39,18 @@
   (define-key company-active-map [tab] nil)
   (define-key company-active-map (kbd "TAB") nil))
 
+(use-package rainbow-mode)
 
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status))
 
+(use-package vue-mode)
+(use-package vue-html-mode)
+
 (use-package markdown-mode
-	     :ensure t)
+  :ensure t)
+
 (use-package lispy
   :config
   (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)())))
@@ -148,7 +153,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (lispy markdown-mode magit company use-package))))
+ '(package-selected-packages
+   (quote
+    (rainbow-mode vue-mode lispy markdown-mode magit company use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
