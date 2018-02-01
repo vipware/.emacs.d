@@ -1,13 +1,14 @@
+;;; init --- Summary
+;;; Commentary
+
 ;;使用emacs的package管理功能
 (require 'package)
 
-(setq
- package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                    ("org" . "http://orgmode.org/elpa/")
-                    ("melpa" . "http://melpa.org/packages/")
-                    ("melpa-stable" . "http://stable.melpa.org/packages/"))
- 
- package-archive-priorities '(("melpa-stable" . 1))) ;; the package manager
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+			 ("org" . "http://orgmode.org/elpa/")
+			 ("melpa" . "http://melpa.org/packages/")
+			 ("melpa-stable" . "http://stable.melpa.org/packages/"))
+      package-archive-priorities '(("melpa-stable" . 1))) ;; the package manager
 
 (package-initialize)
 
@@ -16,10 +17,27 @@
   (package-install 'use-package))
 
 ;;配置use-package包
-(require 'use-package)
-(setq use-package-always-ensure t)
+(eval-when-compile
+  (require 'use-package))
 
 (add-to-list 'exec-path "/usr/local/bin")
+
+;; smooth scrolling
+(use-package smooth-scroll
+  :if (display-graphic-p)
+  :diminish smooth-scroll-mode
+  :config
+  (setq smooth-scroll/vscroll-step-size 8)
+  (smooth-scroll-mode))
+
+(use-package spacemacs-theme
+  :ensure t
+  :init
+  (progn
+    (load-theme 'spacemacs-dark t)
+    ;; (load-theme 'wheatgrass t)
+    ;; Exploits a bug to get a better modeline
+    ))
 
 (use-package company
   :ensure t
@@ -28,9 +46,6 @@
   :commands company-mode
   :init
   (setq
-   company-dabbrev-ignore-case nil
-   company-dabbrev-code-ignore-case nil
-   company-dabbrev-downcase nil
    company-idle-delay 0
    company-minimum-prefix-length 4)
   :config
@@ -39,11 +54,95 @@
   (define-key company-active-map [tab] nil)
   (define-key company-active-map (kbd "TAB") nil))
 
-(use-package rainbow-mode)
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode 1))
+
+
+
+(use-package company-quickhelp
+  :init
+  (add-hook 'company-mode #'company-quickhelp-mode))
+
+(use-package org-bullets
+  :init
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package markdown-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+  :config
+  (add-hook 'markdown-mode-hook (lambda ()
+				  (set-fill-column 72))))
+  
+(use-package google-this
+  :ensure t)
+
+(use-package flycheck
+  :ensure t
+  :config
+  (progn
+    (setq flycheck-check-syntax-automatically '(mode-enabled save))
+    (define-key flycheck-mode-map (kbd "C-c f l") #'flycheck-list-errors)
+    (define-key flycheck-mode-map (kbd "C-c f n") #'flycheck-next-error)
+    (define-key flycheck-mode-map (kbd "C-c f p") #'flycheck-previous-error)))
+
+
+;; flyspell - use aspell instead of ispell
+(use-package flyspell
+  :ensure t
+  :commands (flyspell-mode flyspell-prog-mode)
+  :config (setq ispell-program-name (executable-find "aspell")
+                ispell-extra-args '("--sug-mode=ultra")))
+
+;; emms
+(use-package emms
+  :ensure t
+  :config
+  (progn
+    (emms-standard)
+    (emms-default-players)
+    (setq emms-playlist-buffer-name "Music-EMMS")
+    (setq emms-source-file-default-directory "~/Music/")))
+
+
+;;Projectile related config
+(use-package projectile
+  :ensure t
+  :diminish projectile-mode "p"
+  :init
+  (progn
+    (projectile-global-mode))
+  :config
+  (progn
+    (setq projectile-enable-caching t)))
+
+
+(use-package alert
+  :commands (alert)
+  :init
+  (setq alert-default-style 'notifications))
+
+;;power-line
+(use-package powerline
+  :config
+  (powerline-default-theme)
+  (display-time-mode t))
+
 
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status))
+
+;; popwin
+(use-package popwin
+  :config (popwin-mode))
+
+;; CMakef
+(use-package cmake-mode
+  :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'"))
 
 (use-package vue-mode)
 (use-package vue-html-mode)
@@ -155,10 +254,10 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (rainbow-mode vue-mode lispy markdown-mode magit company use-package))))
+    (projectile spacemacs-theme zenburn-theme molokai-theme flycheck company-quickhelp powerline alert rainbow-mode vue-mode lispy markdown-mode magit company use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
