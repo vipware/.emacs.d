@@ -7,18 +7,15 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
-
-(setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
-(load-file custom-file)
-
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load-file custom-file)
 
 (require 'init-packages)
 (require 'init-ui)
 (require 'init-better-defaults)
 (require 'init-keybindings)
-
+(require 'init-themes)
 
 
 (add-to-list 'exec-path "/usr/local/bin")
@@ -31,14 +28,6 @@
   (setq smooth-scroll/vscroll-step-size 8)
   (smooth-scroll-mode))
 
-(use-package spacemacs-theme
-  :ensure t
-  :init
-  (progn
-    (load-theme 'spacemacs-dark t)
-    ;; (load-theme 'wheatgrass t)
-    ;; Exploits a bug to get a better modeline
-    ))
 
 (use-package company
   :ensure t
@@ -193,7 +182,6 @@
  ((string-equal system-type "gnu/linux") ; linux
   (progn
     (message "Linux"))))
-
 
 
 
