@@ -2,16 +2,33 @@
 ;;; Commentary
 
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+
+;;使用emacs的package管理功能
+(require 'package)
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+			 ("org" . "http://orgmode.org/elpa/")
+			 ("melpa" . "http://melpa.org/packages/")
+			 ("melpa-stable" . "http://stable.melpa.org/packages/"))
+      package-archive-priorities '(("melpa-stable" . 1))) ;; the package manager
+
 (package-initialize)
+
+(when (not package-archive-contents)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;;配置use-package包
+(eval-when-compile
+  (require 'use-package))
+
+
+
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
 (load-file custom-file)
 
-(require 'init-packages)
+;;(require 'init-packages)
 (require 'init-ui)
 (require 'init-better-defaults)
 (require 'init-keybindings)

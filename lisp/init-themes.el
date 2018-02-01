@@ -8,4 +8,4 @@
     ))
 
 
-(provide init-themes)
+(provide 'init-themes)
