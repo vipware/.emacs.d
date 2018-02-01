@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "git-commit" "git-commit.el" (23154 33895 230300
-;;;;;;  753000))
+;;;### (autoloads nil "git-commit" "git-commit.el" (23154 42658 391057
+;;;;;;  658000))
 ;;; Generated autoloads from git-commit.el
 
 (defvar global-git-commit-mode t "\

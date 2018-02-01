@@ -4,7 +4,7 @@
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
 ;;;### (autoloads nil "spacemacs-common" "spacemacs-common.el" (23154
-;;;;;;  33869 984371 406000))
+;;;;;;  42636 194277 792000))
 ;;; Generated autoloads from spacemacs-common.el
 
 (when load-file-name (add-to-list 'custom-theme-load-path (file-name-as-directory (file-name-directory load-file-name))))
@@ -12,7 +12,7 @@
 ;;;***
 
 ;;;### (autoloads nil nil ("spacemacs-dark-theme.el" "spacemacs-light-theme.el"
-;;;;;;  "spacemacs-theme-pkg.el") (23154 33869 982089 885000))
+;;;;;;  "spacemacs-theme-pkg.el") (23154 42636 190873 13000))
 
 ;;;***
 

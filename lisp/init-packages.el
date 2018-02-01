@@ -5,7 +5,7 @@
       package-archive-priorities '(("melpa-stable" . 1))) ;; the package manager
 
 
-(when (not package-archive-contents)
+(unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 

@@ -40,6 +40,8 @@
 
 ;;记住最近打开的文件列表
 (require 'recentf)
+(setq recentf-max-saved-items 256
+      recentf-max-menu-items 16)
 (recentf-mode 1)
 ;;自动打开上次编辑的文件
 (desktop-save-mode 1)

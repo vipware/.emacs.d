@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "emms-cache" "emms-cache.el" (23154 33888 565857
-;;;;;;  139000))
+;;;### (autoloads nil "emms-cache" "emms-cache.el" (23154 42653 107605
+;;;;;;  51000))
 ;;; Generated autoloads from emms-cache.el
 
 (autoload 'emms-cache-enable "emms-cache" "\
@@ -24,8 +24,8 @@ Toggle caching of Emms track data.
 
 ;;;***
 
-;;;### (autoloads nil "emms-lyrics" "emms-lyrics.el" (23154 33888
-;;;;;;  505619 856000))
+;;;### (autoloads nil "emms-lyrics" "emms-lyrics.el" (23154 42653
+;;;;;;  55259 282000))
 ;;; Generated autoloads from emms-lyrics.el
 
 (autoload 'emms-lyrics-enable "emms-lyrics" "\
@@ -46,7 +46,7 @@ Toggle displaying emms lyrics.
 ;;;***
 
 ;;;### (autoloads nil "emms-mode-line" "emms-mode-line.el" (23154
-;;;;;;  33888 575134 970000))
+;;;;;;  42653 116112 161000))
 ;;; Generated autoloads from emms-mode-line.el
 
 (autoload 'emms-mode-line-enable "emms-mode-line" "\
@@ -67,7 +67,7 @@ Toggle `emms-mode-line'.
 ;;;***
 
 ;;;### (autoloads nil "emms-player-mpd" "emms-player-mpd.el" (23154
-;;;;;;  33888 516070 656000))
+;;;;;;  42653 62589 904000))
 ;;; Generated autoloads from emms-player-mpd.el
 
 (autoload 'emms-player-mpd-clear "emms-player-mpd" "\
@@ -106,7 +106,7 @@ rather than EMMS.
 ;;;***
 
 ;;;### (autoloads nil "emms-playing-time" "emms-playing-time.el"
-;;;;;;  (23154 33888 493283 123000))
+;;;;;;  (23154 42653 45355 720000))
 ;;; Generated autoloads from emms-playing-time.el
 
 (autoload 'emms-playing-time-enable-display "emms-playing-time" "\
@@ -122,7 +122,7 @@ Remove playing time from mode line.
 ;;;***
 
 ;;;### (autoloads nil "emms-playlist-limit" "emms-playlist-limit.el"
-;;;;;;  (23154 33888 481268 285000))
+;;;;;;  (23154 42653 35704 185000))
 ;;; Generated autoloads from emms-playlist-limit.el
 
 (autoload 'emms-playlist-limit-enable "emms-playlist-limit" "\
@@ -143,7 +143,7 @@ Toggle emms playlist limit.
 ;;;***
 
 ;;;### (autoloads nil "emms-playlist-mode" "emms-playlist-mode.el"
-;;;;;;  (23154 33888 539432 486000))
+;;;;;;  (23154 42653 83171 706000))
 ;;; Generated autoloads from emms-playlist-mode.el
 
 (autoload 'emms-playlist-mode "emms-playlist-mode" "\
@@ -154,8 +154,8 @@ A major mode for Emms playlists.
 
 ;;;***
 
-;;;### (autoloads nil "emms-score" "emms-score.el" (23154 33888 495734
-;;;;;;  197000))
+;;;### (autoloads nil "emms-score" "emms-score.el" (23154 42653 47430
+;;;;;;  479000))
 ;;; Generated autoloads from emms-score.el
 
 (autoload 'emms-score-enable "emms-score" "\
@@ -175,8 +175,8 @@ Toggle emms-score.
 
 ;;;***
 
-;;;### (autoloads nil "emms-setup" "emms-setup.el" (23154 33888 569584
-;;;;;;  541000))
+;;;### (autoloads nil "emms-setup" "emms-setup.el" (23154 42653 110675
+;;;;;;  676000))
 ;;; Generated autoloads from emms-setup.el
 
 (autoload 'emms-minimalistic "emms-setup" "\
@@ -210,7 +210,7 @@ Set `emms-player-list' to `emms-setup-default-player-list'.
 ;;;***
 
 ;;;### (autoloads nil "emms-source-file" "emms-source-file.el" (23154
-;;;;;;  33888 501101 494000))
+;;;;;;  42653 51385 311000))
 ;;; Generated autoloads from emms-source-file.el
  (autoload 'emms-play-file "emms-source-file" nil t)
  (autoload 'emms-add-file "emms-source-file" nil t)
@@ -247,7 +247,7 @@ Search for REGEXP and display the results in a locate buffer
 ;;;***
 
 ;;;### (autoloads nil "emms-source-playlist" "emms-source-playlist.el"
-;;;;;;  (23154 33888 478788 750000))
+;;;;;;  (23154 42653 33104 564000))
 ;;; Generated autoloads from emms-source-playlist.el
  (autoload 'emms-play-playlist "emms-source-playlist" nil t)
  (autoload 'emms-add-playlist "emms-source-playlist" nil t)
@@ -270,8 +270,8 @@ Search for REGEXP and display the results in a locate buffer
 
 ;;;***
 
-;;;### (autoloads nil "emms-streams" "emms-streams.el" (23154 33888
-;;;;;;  543329 860000))
+;;;### (autoloads nil "emms-streams" "emms-streams.el" (23154 42653
+;;;;;;  87516 96000))
 ;;; Generated autoloads from emms-streams.el
 
 (autoload 'emms-streams "emms-streams" "\
@@ -281,8 +281,8 @@ Opens the EMMS Streams interface.
 
 ;;;***
 
-;;;### (autoloads nil "emms-volume" "emms-volume.el" (23154 33888
-;;;;;;  471022 58000))
+;;;### (autoloads nil "emms-volume" "emms-volume.el" (23154 42653
+;;;;;;  24804 253000))
 ;;; Generated autoloads from emms-volume.el
 
 (autoload 'emms-volume-raise "emms-volume" "\
@@ -308,7 +308,7 @@ Lower volume and enable or extend the `emms-volume-minor-mode' timeout.
 ;;;***
 
 ;;;### (autoloads nil "emms-volume-amixer" "emms-volume-amixer.el"
-;;;;;;  (23154 33888 488599 468000))
+;;;;;;  (23154 42653 41987 841000))
 ;;; Generated autoloads from emms-volume-amixer.el
 
 (autoload 'emms-volume-amixer-change "emms-volume-amixer" "\
@@ -319,7 +319,7 @@ Change amixer master volume by AMOUNT.
 ;;;***
 
 ;;;### (autoloads nil "emms-volume-pulse" "emms-volume-pulse.el"
-;;;;;;  (23154 33888 523105 850000))
+;;;;;;  (23154 42653 68003 300000))
 ;;; Generated autoloads from emms-volume-pulse.el
 
 (autoload 'emms-volume-pulse-change "emms-volume-pulse" "\
@@ -339,7 +339,7 @@ Change PulseAudio volume by AMOUNT.
 ;;;;;;  "emms-player-simple.el" "emms-player-vlc.el" "emms-player-xine.el"
 ;;;;;;  "emms-playlist-sort.el" "emms-show-all.el" "emms-stream-info.el"
 ;;;;;;  "emms-tag-editor.el" "emms-url.el" "emms.el" "jack.el" "later-do.el")
-;;;;;;  (23154 33888 584122 752000))
+;;;;;;  (23154 42653 123011 757000))
 
 ;;;***
 

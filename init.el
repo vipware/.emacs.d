@@ -8,53 +8,23 @@
 (require 'package)
 
 
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
 (load-file custom-file)
 
 (require 'init-packages)
 (require 'init-ui)
+(require 'init-themes)
 (require 'init-better-defaults)
 (require 'init-keybindings)
-(require 'init-themes)
+(require 'init-complate)
+
 
 
 (add-to-list 'exec-path "/usr/local/bin")
 
-;; smooth scrolling
-(use-package smooth-scroll
-  :if (display-graphic-p)
-  :diminish smooth-scroll-mode
-  :config
-  (setq smooth-scroll/vscroll-step-size 8)
-  (smooth-scroll-mode))
-
-
-(use-package company
-  :ensure t
-  :bind (("C-c /". company-complete))
-  :diminish company-mode
-  :commands company-mode
-  :init
-  (setq
-   company-idle-delay 0
-   company-minimum-prefix-length 4)
-  :config
-  ;; disables TAB in company-mode, freeing it for yasnippet
-  (global-company-mode)
-  (define-key company-active-map [tab] nil)
-  (define-key company-active-map (kbd "TAB") nil))
-
-(use-package yasnippet
-  :ensure t
-  :init
-  (yas-global-mode 1))
-
-
-
-(use-package company-quickhelp
-  :init
-  (add-hook 'company-mode #'company-quickhelp-mode))
+(use-package dash)
+(use-package f)
 
 (use-package org-bullets
   :init
@@ -99,28 +69,12 @@
     (setq emms-source-file-default-directory "~/Music/")))
 
 
-;;Projectile related config
-(use-package projectile
-  :ensure t
-  :diminish projectile-mode "p"
-  :init
-  (progn
-    (projectile-global-mode))
-  :config
-  (progn
-    (setq projectile-enable-caching t)))
-
 
 (use-package alert
   :commands (alert)
   :init
   (setq alert-default-style 'notifications))
 
-;;power-line
-(use-package powerline
-  :config
-  (powerline-default-theme)
-  (display-time-mode t))
 
 
 (use-package magit
@@ -145,6 +99,20 @@
   :config
   (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)())))
 
+
+;; helm
+(use-package helm
+  :diminish helm-mode
+  :config
+  (require 'helm-config)
+  (general-define-key
+   :keymaps 'helm-map
+   "C-c !" 'helm-toggle-suspend-update
+   "<tab>" 'helm-execute-persistent-action
+   "C-i" 'helm-execute-persistent-action
+   "C-z" 'helm-select-action)
+  (global-unset-key (kbd "C-x c"))
+  (helm-mode))
 
 
 ;;{{-- speedbar.elc  
